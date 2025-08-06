@@ -1,9 +1,24 @@
-server:
-  port: 8082
-  spring:
-    data:
-      mongodb:
-        uri: mongodb://localhost:27017/customer_service
-    application:
-      name: customer-service
 
+server:
+  port: ${SERVER_PORT:8082}
+
+spring:
+  application:
+    name: customer-service
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+
+chatbot:
+  base-url: http://3.82.220.156
+logging:
+  level:
+    root: INFO
+    com.zapcom: DEBUG
+  file:
+    name: logs/application.log

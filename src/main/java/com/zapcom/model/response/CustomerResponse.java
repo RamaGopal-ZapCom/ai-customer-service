@@ -6,4 +6,5 @@ import lombok.Data;
 @Builder
 public class CustomerResponse {
     private String message;
+
 }

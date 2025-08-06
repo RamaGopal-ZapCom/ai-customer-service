@@ -35,3 +35,9 @@ out/
 
 ### VS Code ###
 .vscode/
+/mongo_data/
+
+# Ignore log files
+logs/
+*.log
+
