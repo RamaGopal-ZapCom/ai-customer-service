@@ -1,0 +1,48 @@
+
+version: '3.8'
+
+services:
+
+  customer-mongo:
+
+    image: mongo:6.0.21
+
+    container_name: customer-mongo
+
+    ports:
+
+      - "27018:27017"
+
+    volumes:
+
+      - mongo-data:/data/db
+
+    restart: always
+
+  customer-service:
+
+    build:
+
+      context: .
+
+      dockerfile: Dockerfile
+
+    container_name: customer-service
+
+    ports:
+
+      - "8082:8082"
+
+    depends_on:
+
+      - customer-mongo
+
+    environment:
+
+      - SPRING_DATA_MONGODB_URI=mongodb://customer-mongo:27017/customer_service_test
+
+    restart: always
+
+volumes:
+
+  mongo-data:
